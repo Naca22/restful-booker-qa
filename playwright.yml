@@ -1,0 +1,43 @@
+name: API Tests
+
+# Run on every push and pull request, and allow manual runs from the Actions tab.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Playwright API suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # No `playwright install` step: this is an API-only suite, so no browsers
+      # are needed.
+
+      - name: Run API tests
+        run: npm test
+
+      # Always upload the HTML report, even when tests fail, so failures can be
+      # investigated from the Actions run.
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
