@@ -1,0 +1,23 @@
+{
+  "name": "restful-booker-qa",
+  "version": "1.0.0",
+  "description": "API test automation suite for the restful-booker API, built with Playwright.",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report"
+  },
+  "keywords": [
+    "qa",
+    "api-testing",
+    "playwright",
+    "restful-booker"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
