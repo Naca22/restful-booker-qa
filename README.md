@@ -10,7 +10,7 @@ The suite covers the authentication and booking CRUD endpoints with a mix of pos
 
 ```bash
 # 1. Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/Naca22/restful-booker-qa
 cd restful-booker-qa
 
 # 2. Install dependencies
